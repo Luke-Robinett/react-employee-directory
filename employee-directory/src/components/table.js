@@ -20,11 +20,19 @@ class Table extends Component {
 
     render() {
         return (
-            <div>
-                {
-                    JSON.stringify(this.state.employees)
-                }
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        {
+                            Object.keys({...this.state.employees[0]}).map(column => {
+                                return (
+                                    <th>{column}</th>
+                                )
+                            })
+                        }
+                    </tr>
+                </thead>
+            </table>
         )
     }
 }
