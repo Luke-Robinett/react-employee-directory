@@ -7,8 +7,8 @@ class Table extends Component {
         employees: []
     };
 
-    componentDidMount() {
-        Api.getEmployees()
+    loadTable() {
+        Api.getEmployees(20)
             .then(res => {
                 this.setState({
                     employees: res.data.results
@@ -17,6 +17,10 @@ class Table extends Component {
             .catch(err => {
                 console.log(err);
             });
+    }
+
+    componentDidMount() {
+        this.loadTable();
     }
 
     render() {
