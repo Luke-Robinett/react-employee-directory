@@ -1,6 +1,6 @@
 {
   "name": "employee-directory",
-  "homepage": "https://luke-robinett.github.io/react-employee-directory/",
+  "homepage": "https://luke-robinett.github.io/react-employee-directory/employee-directory/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
