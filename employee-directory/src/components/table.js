@@ -1,3 +1,5 @@
+// To-do: add image thumbnail for each employee
+
 import React, { Component } from "react";
 import Api from "../utils/api";
 import TableHeader from "./table-header";
