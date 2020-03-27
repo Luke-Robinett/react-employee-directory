@@ -2,10 +2,14 @@ import React from "react";
 
 function TableRow(props) {
     return (
-        <tr key={props.employee.id}>
-            <td>{props.employee.id}</td>
-            <td>{props.employee.name}</td>
-            <td>{props.employee.email}</td>
+        <tr key={props.values.id}>
+            {
+                Object.keys(props.values).map(field => {
+                    return (
+                        <td>{props.values[field]}</td>
+                    )
+                })
+            }
         </tr>
     )
 }

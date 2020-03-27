@@ -14,7 +14,7 @@ class Table extends Component {
                 // Transform incoming data so it's easier to work with
                 let data = res.data.results.map((emp, i) => {
                     return {
-                        id: i,
+                        id: i + 1, // auto-incremented unique ID
                         name: emp.name.last + ", " + emp.name.first,
                         email: emp.email
                     };
@@ -38,9 +38,9 @@ class Table extends Component {
         const fields = Object.keys({ ...this.state.employees[0] });
 
         return (
-            <table>
+            <table className="w-100">
                 <TableHeader fields={fields} />
-                <TableBody employees={this.state.employees} />
+                <TableBody rows={this.state.employees} />
             </table>
         )
     }

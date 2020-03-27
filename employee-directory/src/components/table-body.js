@@ -5,9 +5,9 @@ function TableBody(props) {
     return (
         <tbody>
             {
-                props.employees.map(employee => {
+                props.rows.map(row => {
                     return (
-                        <TableRow employee={employee} />
+                        <TableRow values={row} />
                     )
                 })
             }
