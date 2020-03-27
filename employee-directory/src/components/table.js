@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Api from "../utils/api";
+import TableHeader from "./table-header";
 
 class Table extends Component {
     state = {
@@ -19,19 +20,23 @@ class Table extends Component {
     }
 
     render() {
+        const fields = Object.keys({ ...this.state.employees[0] });
         return (
             <table>
-                <thead>
-                    <tr>
-                        {
-                            Object.keys({...this.state.employees[0]}).map(column => {
-                                return (
-                                    <th>{column}</th>
-                                )
-                            })
-                        }
-                    </tr>
-                </thead>
+                <TableHeader fields={fields} />
+                <tbody>
+                    {
+                        this.state.employees.map(employee => {
+                            return (
+                                <tr>
+                                    {
+                                        <td>Data</td>
+                                    }
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
             </table>
         )
     }
