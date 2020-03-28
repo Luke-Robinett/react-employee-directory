@@ -5,19 +5,29 @@ import Table from "./table";
 
 class TableContainer extends Component {
     state = {
+        // employeeData is updated from the external API when the app first loads
         employeeData: [],
+
+        // displayRows is initially a mirror of employeeData but becomes a filtered subset of it when a search is performed
         displayRows: [],
+
         searchString: ""
     };
 
     initialize() {
-        Api.getEmployees(20)
+        // Get our names from the external API and update state variables accordingly
+        Api.getEmployees(40)
             .then(res => {
                 // Transform incoming data so it's easier to work with
                 let data = res.data.results.map((emp, i) => {
                     return {
-                        id: i + 1, // auto-incremented unique ID
+                        // Give our dataset an auto-incremented unique ID field
+                        id: i + 1,
+
+                        // The API returns names as an object of various fields, most of which we don't need
+                        // Just grab first and last name and concatenate in the form last, first
                         name: emp.name.last + ", " + emp.name.first,
+
                         email: emp.email
                     };
                 });
@@ -44,6 +54,8 @@ class TableContainer extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+
+        // Filter displayedRows by the form's search string
         this.setState(
             {
                 displayRows: this.state.employeeData.filter(row => {
@@ -57,9 +69,14 @@ class TableContainer extends Component {
 
     handleSort = event => {
         event.preventDefault();
+
+        // Sort table by employee name in ascending order
         this.setState(
             {
                 displayRows: this.state.employeeData.sort((rowA, rowB) => {
+                    // This comparison logic adapted from example found at:
+                    // https://www.w3schools.com/js/js_array_sort.asp
+
                     const nameA = rowA.name.toLowerCase();
                     const nameB = rowB.name.toLowerCase();
                     if (nameA < nameB) return -1;
@@ -72,6 +89,8 @@ class TableContainer extends Component {
 
     handleFormReset = event => {
         event.preventDefault();
+
+        // Reset search field and show all employees
         this.setState(
             {
                 searchString: "",
