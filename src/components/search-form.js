@@ -15,6 +15,9 @@ function SearchForm(props) {
                 <button onClick={props.handleFormSubmit}>
                     Search
                 </button>
+                <button onClick={props.handleFormReset}>
+                    Reset
+                </button>
             </div>
         </form>
     )

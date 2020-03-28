@@ -55,6 +55,16 @@ class TableContainer extends Component {
         );
     }
 
+    handleFormReset = event => {
+        event.preventDefault();
+        this.setState(
+            {
+                searchString: "",
+                displayRows: this.state.employeeData
+            }
+        );
+    }
+
     componentDidMount() {
         this.initialize();
     }
@@ -66,6 +76,7 @@ class TableContainer extends Component {
                     searchString={this.state.searchString}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
+                    handleFormReset={this.handleFormReset}
                 />
                 <Table rows={this.state.displayRows} />
             </div>
