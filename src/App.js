@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import Table from "./components/table";
+import TableContainer from "./components/table-container";
 
 function App() {
   return (
     <div className="App">
       <h1>Employee Directory</h1>
-      <Table />
+      <hr />
+      <TableContainer />
     </div>
   );
 }
