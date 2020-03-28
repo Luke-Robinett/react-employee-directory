@@ -55,6 +55,21 @@ class TableContainer extends Component {
         );
     }
 
+    handleSort = event => {
+        event.preventDefault();
+        this.setState(
+            {
+                displayRows: this.state.employeeData.sort((rowA, rowB) => {
+                    const nameA = rowA.name.toLowerCase();
+                    const nameB = rowB.name.toLowerCase();
+                    if (nameA < nameB) return -1;
+                    if (nameA > nameB) return 1;
+                    return 0;
+                })
+            }
+        );
+    }
+
     handleFormReset = event => {
         event.preventDefault();
         this.setState(
@@ -76,6 +91,7 @@ class TableContainer extends Component {
                     searchString={this.state.searchString}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
+                    handleSort={this.handleSort}
                     handleFormReset={this.handleFormReset}
                 />
                 <Table rows={this.state.displayRows} />
