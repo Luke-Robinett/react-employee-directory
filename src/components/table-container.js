@@ -73,7 +73,7 @@ class TableContainer extends Component {
         // Sort table by employee name in ascending order
         this.setState(
             {
-                displayRows: this.state.employeeData.sort((rowA, rowB) => {
+                displayRows: this.state.displayRows.sort((rowA, rowB) => {
                     // This comparison logic adapted from example found at:
                     // https://www.w3schools.com/js/js_array_sort.asp
 
